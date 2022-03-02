@@ -1,10 +1,10 @@
-package com.example.libraryex;
+package ysh.library;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LibraryExApplicationTests {
+class LibraryApplicationTests {
 
 	@Test
 	void contextLoads() {
