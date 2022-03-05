@@ -2,7 +2,6 @@ package ysh.library.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,15 +20,15 @@ public class UserController {
     /**
      * 회원가입 폼
      */
-    @GetMapping("/signUp")
+    @GetMapping("/signup")
     public String signUpForm(){
-        return "signup";
+        return "user/signup";
     }
 
     /**
      * 회원가입 진행
      */
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
     public String signUp(User user){
         user.setRole("USER");
         userService.joinUser(user);
@@ -43,7 +42,7 @@ public class UserController {
     public String userAccess(Model model, Authentication auth){
         MyUserDetail userDetail = (MyUserDetail) auth.getPrincipal();
         model.addAttribute("info", userDetail.getUsername());
-        return "user_access";
+        return "user/user_access";
     }
 
     /**

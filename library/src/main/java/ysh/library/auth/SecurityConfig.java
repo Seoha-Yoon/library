@@ -21,9 +21,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/userAccess").hasRole("USER") // 각 URL에 대한 접근여부
-                .antMatchers("/signUp").anonymous()
-                .antMatchers("/images").anonymous() // html 연습용으로 추가
+                .antMatchers("/userAccess", "/").hasRole("USER") // 각 URL에 대한 접근여부
+                .antMatchers("/login","/signup","/user").permitAll()
+                .antMatchers("/admin").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .and()
@@ -38,4 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
+    /**
+     * 인증 무시 경로 설정
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
+    }
 }
