@@ -45,4 +45,13 @@ public class UserController {
         model.addAttribute("info", userDetail.getUsername());
         return "user_access";
     }
+
+    /**
+     *
+     * basic 화면
+     */
+    @GetMapping("/hello")
+    public String userAccess(Model model){
+        return "hello";
+    }
 }
