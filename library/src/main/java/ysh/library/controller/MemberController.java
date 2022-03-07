@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ysh.library.domain.Member;
 import ysh.library.service.MemberService;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -44,7 +45,8 @@ public class MemberController {
      * 회원가입
      */
     @GetMapping("/signUp")
-    public String signUp(){
+    public String createSignUpForm(Model model) {
+        model.addAttribute("memberForm", new MemberForm());
         return "auth/sign_up";
     }
 
@@ -52,10 +54,11 @@ public class MemberController {
      * 회원가입 성공
      */
     @PostMapping("/signUp")
-    public String create(Member member, BindingResult result){
+    public String create(@Valid MemberForm form, BindingResult result){
         if(result.hasErrors())
             return "auth/sign_up";
 
+        Member member = new Member(form.getEmail(), form.getPassword(), form.getName());
         member.setDate(LocalDate.now());
         memberService.joinUser(member);
         return "redirect:/";

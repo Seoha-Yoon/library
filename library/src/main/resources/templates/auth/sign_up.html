@@ -1,27 +1,36 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<head th:replace="layouts/header"></head>
 <body>
-<form action="/signUp" method="post">
+<form role="form" action="/signUp" th:object="${memberForm}" method="post">
     <div class="container">
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label> <input
-                type="email" class="form-control" id="exampleInputEmail1"
-                name="email" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll
-                never share your email with anyone else.</small>
+            <label th:for="email">Email address</label>
+            <input type="text" th:field="*{email}" class="form-control" placeholder="이메일을 입력하세요"
+                   required autofocus
+                   th:class="${#fields.hasErrors('email')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect date</p>
+
         </div>
+
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label> <input
-                type="password" class="form-control" id="exampleInputPassword1"
-                name="password" placeholder="Password">
+        <label th:for="password">Password</label>
+        <input type="text" th:field="*{password}" class="form-control" placeholder="비밀번호를 입력하세요"
+               th:class="${#fields.hasErrors('password')}? 'form-control fieldError' : 'form-control'">
+        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect date</p>
+
         </div>
+
         <div class="form-group">
-            <label for="exampleInputPassword1">Name</label> <input type="text"
-                                                                   class="form-control" id="exampleInputPassword1" name="name"
-                                                                   placeholder="name">
+            <label th:for="name">이름</label>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력하세요">
         </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
