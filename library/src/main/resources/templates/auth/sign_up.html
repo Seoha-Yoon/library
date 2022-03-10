@@ -7,7 +7,7 @@
 </style>
 <head th:replace="layouts/header"></head>
 <body>
-<form role="form" action="/signUp" th:object="${memberForm}" method="post">
+<form role="form" action="/auth/signUp" th:object="${memberForm}" method="post">
     <div class="container">
         <div class="form-group">
             <label th:for="email">Email address</label>

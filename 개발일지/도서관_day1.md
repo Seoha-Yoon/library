@@ -6,8 +6,6 @@
 
 Spring + h2 database + JPA
 
-
-
 **1. Member Entity 생성**
 
 * 각 컬럼명으로 id, email, password, name, date을 가지는 Member Entity를 생성시켜주었다. 이 때, email, password, name은 유저로부터 입력 받을 값이다.
@@ -39,8 +37,6 @@ Spring + h2 database + JPA
   * "/signIn": 로그인 성공 여부 확인 페이지
   
   * "/signUp": 회원가입 페이지(멤버 폼을 받는다.), 성공하면 로그인 페이지로 리다이렉트
-
-
 
 * **회원 가입 로직**
   

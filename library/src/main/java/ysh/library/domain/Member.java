@@ -5,11 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import ysh.library.auth.MemberSignupRequestDto;
+import ysh.library.auth.Role;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
@@ -24,14 +24,23 @@ public class Member {
     private String password;
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @Column(name = "RegDate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
-    public Member(@NotEmpty String email, @NotEmpty String password, String name) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
+    public Member(MemberSignupRequestDto request) {
+        this.email = request.getEmail();
+        this.password = request.getPassword();
+        this.name = request.getName();
         date = LocalDate.now();
+        role = Role.USER;
     }
+
+    public void encryptPassword(PasswordEncoder passwordEncoder) {
+        password = passwordEncoder.encode(password);
+    }
+
 }
