@@ -79,6 +79,6 @@ public class MemberController {
 
         MemberSignupRequestDto request = new MemberSignupRequestDto(form.getEmail(), form.getPassword(), form.getName());
         memberService.joinUser(request);
-        return "redirect:/login";
+        return "redirect:/auth/login";
     }
 }
