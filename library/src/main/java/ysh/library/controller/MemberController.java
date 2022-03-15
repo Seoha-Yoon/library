@@ -53,6 +53,11 @@ public class MemberController {
         return "auth/sign_up";
     }
 
+    @GetMapping("/login")
+    public String login(){
+        return "auth/login";
+    }
+
     /**
      * 회원가입 성공
      */

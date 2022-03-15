@@ -8,7 +8,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ysh.library.auth.JwtRequestDto;
 import ysh.library.auth.MemberSignupRequestDto;
 import ysh.library.auth.UserDetailsImpl;
 import ysh.library.domain.Member;
@@ -37,15 +36,6 @@ public class MemberService {
         return member.getUserId();
     }
 
-    public String login(JwtRequestDto request){
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        UserDetailsImpl principal = (UserDetailsImpl) authentication.getPrincipal();
-        return principal.getUsername();
-    }
 
     public Optional<Member> findUser(String email, String password){
         return memberRepository.findUser(email, password);

@@ -44,11 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/auth/signIn")
-                .permitAll()
+                    .loginPage("/auth/login")
+                    .defaultSuccessUrl("/auth/signIn")
+                    .permitAll()
                 .and()
-                .logout().logoutUrl("/user/logout")
-                .permitAll();
+                    .logout().logoutSuccessUrl("/auth/login");
         http.cors().and();
         http.csrf().disable();
 
