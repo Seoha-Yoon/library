@@ -2,7 +2,7 @@
 
 ## Day2. Spring Security를 이용한 회원가입, 로그인 구현
 
-#### 페이지 설계
+### 페이지 설계
 
 1) **로그인 페이지 "/auth/login"**
    
@@ -30,10 +30,10 @@
    * 회원 목록 조회
 
 
+------
 
 
-
-#### Spring Security 로그인 구현
+### Spring Security 로그인 구현
 
 **1. Config 파일 생성**
 
@@ -76,10 +76,10 @@
 
 
 
+------
 
 
-
-#### 회원가입 구현
+### 회원가입 구현
 
 * 회원가입 시 **Member** 클래스가 아닌 **MemberSignUpRequestDto**라는 클래스를 만들어서 회원가입을 진행했다.
 
@@ -101,15 +101,15 @@
 
 * 회원 가입시, select 박스를 이용하여 Admin/User 권한을 직접 설정할 수 있도록 해주었다.
 
-!로그인 및 회원가입 시 사용되는 MemberEntity, MemberRepository, MemberService 등은 이전에 구현해놨던 것으로 사용했다.
+> 로그인 및 회원가입 시 사용되는 MemberEntity, MemberRepository, MemberService 등은 이전에 구현해놨던 것으로 사용했다.
+
+
+-----
 
 
 
 
-
-
-
-#### 구현 결과
+### 구현 결과
 
 * USER의 권한을 가진 사용자는 '/dashboard' 페이지에 접근 가능하고, ADMIN의 권한을 가진 사용자는 '/admin' 페이지에서 회원 목록을 확인할 수 있었다.
 
@@ -120,10 +120,10 @@
 
 
 
+-----
 
 
-
-#### 추가할 점 및 수정할 점
+### 추가할 점 및 수정할 점
 
 * 권한 핸들링을 제대로 하지 못했다. db에 ROLE_ADMIN, ROLE_USER와 같이 저장되어야 하는데 USER, ADMIN으로 글자만 저장되고 있다.
 
