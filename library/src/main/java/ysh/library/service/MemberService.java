@@ -55,4 +55,10 @@ public class MemberService {
         return memberRepository.findOne(memberId);
     }
 
+    /**
+     * 전체 회원 조회
+     */
+    public List<Member> findMembers(){
+        return memberRepository.findAll();
+    }
 }

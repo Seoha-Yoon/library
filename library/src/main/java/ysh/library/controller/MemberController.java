@@ -41,8 +41,7 @@ public class MemberController {
     public String create(@Valid MemberForm form, BindingResult result){
         if(result.hasErrors())
             return "auth/sign_up";
-
-        MemberSignupRequestDto request = new MemberSignupRequestDto(form.getEmail(), form.getPassword(), form.getName());
+        MemberSignupRequestDto request = new MemberSignupRequestDto(form.getEmail(), form.getPassword(), form.getName(), form.getRole());
         memberService.joinUser(request);
         return "redirect:/auth/login";
     }

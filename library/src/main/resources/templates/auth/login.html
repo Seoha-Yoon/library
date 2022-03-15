@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/header"/>
+<head th:replace="fragments/header :: header" />
 <body>
 <div class="container">
     <h1>로그인</h1>
@@ -16,7 +16,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <br/>
-    <div th:replace="layouts/footer"></div>
+    <div th:replace="fragments/footer :: footer"></div>
     <div class="checkbox mb-3">
         <label> <input type="checkbox" value="remember-me">
             Remember me

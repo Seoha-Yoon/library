@@ -36,7 +36,7 @@ public class Member {
         this.password = request.getPassword();
         this.name = request.getName();
         date = LocalDate.now();
-        role = Role.USER;
+        role = request.getRole();
     }
 
     public void encryptPassword(PasswordEncoder passwordEncoder) {
