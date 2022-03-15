@@ -24,31 +24,37 @@ public class UserDetailsImpl implements UserDetails {
         return authorities;
     }
 
+    // 계정의 권한 목록 return
     @Override
     public String getPassword() {
         return member.getPassword();
     }
 
+    // 계정의 고유값 return (unique한 값)
     @Override
     public String getUsername() {
         return member.getEmail();
     }
 
+    // 계정의 만료 여부 return
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    // 계정의 잠김 여부 return
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    // 비밀번호 만료 여부 return
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    // 계정의 활성화 여부 return
     @Override
     public boolean isEnabled() {
         return true;
