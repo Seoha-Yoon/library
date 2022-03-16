@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Rental {
+public class Rent {
 
     @Id @GeneratedValue
     @Column(name = "rental_id")
@@ -23,8 +23,8 @@ public class Rental {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "rent", cascade = CascadeType.ALL)
-    private List<Book> books = new ArrayList<>();
+    @OneToMany(mappedBy = "rent_id", cascade = CascadeType.ALL)
+    private List<RentBook> rentBooks = new ArrayList<>();
 
     private LocalDateTime rentDate; // 빌린 시간
 

@@ -22,8 +22,4 @@ public class Book {
     @Enumerated(EnumType.STRING)
     private BookStatus status = BookStatus.AVAILABLE;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rent")
-    private Rental rent;
-
 }
