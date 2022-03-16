@@ -1,0 +1,1 @@
+CREATE TABLE BOOK AS SELECT * FROM CSVREAD('/Users/yoonseoha/book_data.csv')

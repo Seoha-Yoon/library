@@ -15,14 +15,6 @@ public class HomeController {
 
     private final MemberService memberService;
 
-    // 로그인한 유저만 접근 가능
-    @GetMapping("dashboard")
-    public String dashboard(Model model)
-    {
-
-        return "library/main";
-    }
-
     // admin만 접근 가능
     @GetMapping("admin")
     public String admin(Model model) {
