@@ -3,8 +3,7 @@ package ysh.library.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter @Setter
@@ -18,5 +17,13 @@ public class Book {
     private String publisher;
     private String isbn;
     private int year;
+
+    // 책 상태
+    @Enumerated(EnumType.STRING)
+    private BookStatus status = BookStatus.AVAILABLE;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rent")
+    private Rental rent;
 
 }

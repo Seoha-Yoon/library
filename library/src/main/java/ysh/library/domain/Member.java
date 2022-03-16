@@ -11,12 +11,15 @@ import ysh.library.auth.Role;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
     @Id
+    @Column(name = "member_id")
     @GeneratedValue
     private Long userId;
     private String email;
@@ -29,6 +32,10 @@ public class Member {
     @Column(name = "RegDate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Rental rental;
 
     public Member(MemberSignupRequestDto request) {
         this.email = request.getEmail();
