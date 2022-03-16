@@ -3,18 +3,14 @@ package ysh.library.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ysh.library.auth.MemberSignupRequestDto;
-import ysh.library.auth.UserDetailsImpl;
 import ysh.library.domain.Member;
 import ysh.library.repository.MemberRepository;
 
 import java.util.List;
-import org.springframework.security.core.Authentication;
 import java.util.Optional;
 
 @Service
@@ -45,10 +41,6 @@ public class MemberService {
         Optional<Member> userByEmail = memberRepository.findUserByEmail(member.getEmail());
         if(userByEmail.isPresent())
             throw new IllegalStateException("이미 존재하는 회원입니다.");
-    }
-
-    public Optional<Member> findUserByEmail(String email){
-        return memberRepository.findUserByEmail(email);
     }
 
     public Member findOne(Long memberId){

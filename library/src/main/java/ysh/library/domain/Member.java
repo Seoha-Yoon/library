@@ -10,7 +10,6 @@ import ysh.library.auth.MemberSignupRequestDto;
 import ysh.library.auth.Role;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Entity

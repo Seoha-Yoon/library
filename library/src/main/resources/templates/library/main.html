@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      >
 <head>
     <meta charset="UTF-8">
     <title>user page</title>
+    <head th:replace="fragments/header :: header" />
 </head>
 <body>
 <h2>메인 페이지(회원 전용)</h2>
 
-ID : <span sec:authentication="name"></span> <br>
-소유 권한 : <span sec:authentication="authorities"></span> <br>
+<p> 회원 전용 페이지 입니다.</p>
 
 <form id="logout" th:action="@{/logout}" method="GET">
     <input type="submit" value="로그아웃"/>
