@@ -12,7 +12,6 @@
         <th>#</th>
         <th>제목</th>
         <th>작가</th>
-        <th>출판사</th>
       </tr>
       </thead>
       <tbody>
@@ -20,7 +19,9 @@
         <td th:text="${book.id}"></td>
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
-        <td th:text="${book.publisher}"></td>
+        <td>
+          <a href="#" th:href="@{/library/books/{id}/detail (id=${book.id})}" class="btn btn-primary" role="button">세부정보</a>
+        </td>
       </tr>
       </tbody>
     </table>

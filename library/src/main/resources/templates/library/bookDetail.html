@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div th:object="${book}" method="post">
+        <p th:text="${book.title}"> 제목 </p>
+        <p th:text="${book.author}"> 작가 </p>
+        <p th:text="${book.publisher}"> 출판사 </p>
+        <p th:text="${book.year}"> 출간년도 </p>
+        <p th:text="${book.status}"> 책 상태 </p>
+    </div>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>
