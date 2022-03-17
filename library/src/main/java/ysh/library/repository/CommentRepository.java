@@ -2,6 +2,7 @@ package ysh.library.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ysh.library.domain.Comment;
 
 import javax.persistence.EntityManager;
@@ -28,6 +29,11 @@ public class CommentRepository {
     public List<Comment> findAll(){
         return em.createQuery("select c from Comment c", Comment.class)
                 .getResultList();
+    }
+
+    public void delete(Long id){
+        Comment comment = findOne(id);
+        em.remove(comment);
     }
 
 }

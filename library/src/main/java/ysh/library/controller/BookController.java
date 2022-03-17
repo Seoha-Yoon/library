@@ -59,6 +59,31 @@ public class BookController {
         Long memberId = memberService.findUserByEmail(form.getEmail());
         commentService.createComment(memberId, bookId, form.getComment());
 
-        return "redirect:/library";
+        return "redirect:/library/books/{bookId}/detail";
+    }
+
+    @GetMapping("/books/{bookId}/comment/{commentId}/edit")
+    public String updateCommentForm(@PathVariable("commentId") Long commentId,
+                                Model model){
+        Comment comment = commentService.findOne(commentId);
+        CommentForm form = new CommentForm();
+        form.setEmail(comment.getMember().getEmail());
+        form.setComment(comment.getComments());
+        model.addAttribute("form", form);
+
+        return "library/editCommentForm";
+    }
+
+    @PostMapping("/books/{bookId}/comment/{commentId}/edit")
+    public String updateComment(@PathVariable("commentId") Long commentId,
+                                CommentForm form, Model model){
+        commentService.editComment(commentId, form.getComment());
+        return "redirect:/library/books/{bookId}/detail";
+    }
+
+    @GetMapping("/books/{bookId}/comment/{commentId}")
+    public String deleteComment(@PathVariable("commentId") Long commentId){
+        commentService.deleteComment(commentId);
+        return "redirect:/library/books/{bookId}/detail";
     }
 }

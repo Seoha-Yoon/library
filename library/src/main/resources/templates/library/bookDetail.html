@@ -25,7 +25,10 @@
             <td th:text="${comment.member.name}"></td>
             <td th:text="${comment.comments}"></td>
             <td>
-                <a href="#" th:href="@{/library/books/{id}/detail (id=${book.id})}" class="btn btn-primary" role="button">수정</a>
+                <a href="#" th:href="@{/library/books/{bookId}/comment/{commentId}/edit (bookId=${book.id}, commentId=${comment.id})}" class="btn btn-primary" role="button">수정</a>
+            </td>
+            <td>
+                <a href="#" th:href="@{/library/books/{bookId}/comment/{commentId} (bookId=${book.id}, commentId=${comment.id})}" class="btn btn-primary" role="button" >삭제</a>
             </td>
         </tr>
         </tbody>

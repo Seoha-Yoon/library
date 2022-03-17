@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div class="card my-4">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+            <form th:object="${form}"  method="post" autocomplete="off">
+                <div class="form-group">
+                    <label th:for="email">이메일</label>
+                    <input type="text" th:field="*{email}" class="form-control"
+                           placeholder="이메일 입력">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="id" th:value="*{id}" />
+                    <textarea type="text" th:field="*{comment}" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>
