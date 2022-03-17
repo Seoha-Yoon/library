@@ -25,4 +25,19 @@ public class RentBook {
     @JoinColumn(name = "rent_id")
     private Rent rent;
 
+
+    //==생성 매서드==/
+    public static RentBook createRentBook(Book book){
+        RentBook rentBook = new RentBook();
+        rentBook.setBook(book);
+
+        book.changeStatus(BookStatus.RENTED);
+        return rentBook;
+    }
+
+    //==비즈니스 로직==/
+    public void returnBook(){
+        getBook().setStatus(BookStatus.AVAILABLE);
+    }
+
 }

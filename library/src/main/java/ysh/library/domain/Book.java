@@ -22,4 +22,7 @@ public class Book {
     @Enumerated(EnumType.STRING)
     private BookStatus status = BookStatus.AVAILABLE;
 
+    public void changeStatus(BookStatus bookStatus) {
+        status = bookStatus;
+    }
 }

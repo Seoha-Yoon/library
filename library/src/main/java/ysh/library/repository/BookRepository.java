@@ -13,6 +13,8 @@ public class BookRepository {
 
     private final EntityManager em;
 
+    public Book findOne(Long id){ return em.find(Book.class, id);}
+
     public List<Book> findAll(){
         return em.createQuery("select b from Book b", Book.class)
                 .getResultList();

@@ -16,17 +16,43 @@ import java.util.List;
 public class Rent {
 
     @Id @GeneratedValue
-    @Column(name = "rental_id")
+    @Column(name = "rent_id")
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "rent_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rent", cascade = CascadeType.ALL)
     private List<RentBook> rentBooks = new ArrayList<>();
 
     private LocalDateTime rentDate; // 빌린 시간
+
+    //==연관관계 메서드==//
+    public void addRentBook(RentBook rentBook){
+        rentBooks.add(rentBook);
+        rentBook.setRent(this);
+    }
+
+    public void setMember(Member member){
+        this.member = member;
+    }
+
+    public static Rent createRent(Member member, RentBook... rentBooks){
+        Rent rent = new Rent();
+        rent.setMember(member);
+        for (RentBook rentBook : rentBooks) {
+            rent.addRentBook(rentBook);
+        }
+        rent.setRentDate(LocalDateTime.now());
+        return rent;
+    }
+
+    public void returnBook(){
+        for (RentBook rentBook : rentBooks) {
+            rentBook.returnBook();
+        }
+    }
 
 
 }
