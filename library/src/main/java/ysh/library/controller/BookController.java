@@ -1,15 +1,19 @@
 package ysh.library.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ysh.library.domain.Book;
+import ysh.library.domain.Comment;
+import ysh.library.domain.Member;
 import ysh.library.service.BookService;
+import ysh.library.service.CommentService;
+import ysh.library.service.MemberService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,6 +21,8 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
+    private final CommentService commentService;
+    private final MemberService memberService;
 
     // 로그인한 유저만 접근 가능한 라이브러리 홈페이지
     @GetMapping
@@ -35,7 +41,27 @@ public class BookController {
     @GetMapping("/books/{bookId}/detail")
     public String bookDetail(@PathVariable("bookId") Long bookId, Model model){
         Book book = bookService.findOne(bookId);
+        List<Comment> comments = book.getComments();
+
+        if(comments != null && !comments.isEmpty()){
+            model.addAttribute("comments", comments);
+        }
         model.addAttribute("book", book);
         return "library/bookDetail";
+    }
+
+    @GetMapping("/books/{bookId}/comment")
+    public String createComment(@PathVariable("bookId") Long bookId, Model model){
+        model.addAttribute("bookId", bookId);
+        model.addAttribute("form", new CommentForm());
+        return "library/commentForm";
+    }
+
+    @PostMapping("/books/{bookId}/comment")
+    public String createComment(@PathVariable("bookId") Long bookId, CommentForm form, Model model){
+        Long memberId = memberService.findUserByEmail(form.getEmail());
+        commentService.createComment(memberId, bookId, form.getComment());
+
+        return "redirect:/library";
     }
 }

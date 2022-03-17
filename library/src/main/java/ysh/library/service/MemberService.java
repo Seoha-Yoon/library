@@ -43,6 +43,11 @@ public class MemberService {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
     }
 
+    public Long findUserByEmail(String email){
+        Optional<Member> m = memberRepository.findUserByEmail(email);
+        return m.get().getUserId();
+    }
+
     public Member findOne(Long memberId){
         return memberRepository.findOne(memberId);
     }
