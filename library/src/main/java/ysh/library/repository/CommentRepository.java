@@ -1,6 +1,5 @@
 package ysh.library.repository;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ysh.library.domain.Comment;

@@ -1,7 +1,6 @@
 package ysh.library.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ysh.library.domain.Book;
@@ -11,8 +10,6 @@ import ysh.library.domain.RentBook;
 import ysh.library.repository.BookRepository;
 import ysh.library.repository.MemberRepository;
 import ysh.library.repository.RentRepository;
-
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)

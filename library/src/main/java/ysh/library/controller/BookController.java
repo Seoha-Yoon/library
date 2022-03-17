@@ -1,19 +1,16 @@
 package ysh.library.controller;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ysh.library.domain.Book;
 import ysh.library.domain.Comment;
-import ysh.library.domain.Member;
 import ysh.library.service.BookService;
 import ysh.library.service.CommentService;
 import ysh.library.service.MemberService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
