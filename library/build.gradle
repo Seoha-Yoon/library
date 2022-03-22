@@ -28,7 +28,8 @@ dependencies {
 
 	// h2 DB 연동
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtimeOnly 'com.h2database:h2'
+	// runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
 
 	// html 파일만 리컴파일 하면 바뀐 화면을 볼 수 있게 도와줌
 	implementation 'org.springframework.boot:spring-boot-devtools'
