@@ -60,9 +60,9 @@ mysql 서버에 이제 비밀번호를 사용하여 접속할 수 있다.
 
 SQL 클라이언트를 설치해주었다. 앞에서 설정한 root 비밀번호를 입력하여 연결을 하려는데.. 또 에러가 발생했다.
 
-<img title="" src="file:///var/folders/lf/rtm5_zvx4612t2g0hlkznr7m0000gn/T/TemporaryItems/NSIRD_screencaptureui_cMzVKL/스크린샷%202022-03-23%20오전%2012.16.41.png" alt="스크린샷 2022-03-23 오전 12.16.41.png" width="387" data-align="center">
+<img title="" src="https://user-images.githubusercontent.com/60412023/159520704-4ef9a82e-56f5-4f78-912c-6686c6e8a6ef.png" alt="스크린샷 2022-03-23 오전 12.16.41.png" width="387" data-align="center">
 
-<img title="" src="file:///var/folders/lf/rtm5_zvx4612t2g0hlkznr7m0000gn/T/TemporaryItems/NSIRD_screencaptureui_aQCDeA/스크린샷%202022-03-23%20오전%2012.17.27.png" alt="스크린샷 2022-03-23 오전 12.17.27.png" width="426" data-align="center">
+<img title="" src="https://user-images.githubusercontent.com/60412023/159520717-47c428e8-59fa-40a5-a54e-e92a4cac19c4.png" alt="스크린샷 2022-03-23 오전 12.17.27.png" width="426" data-align="center">
 
 비밀번호 문제인데.. 해결방법은 밑에 나와있다.
 
@@ -128,6 +128,6 @@ spring:
 
 ### 5. 결과 화면
 
-![스크린샷 2022-03-22 오후 11.24.42.png](/Users/yoonseoha/Desktop/스크린샷%202022-03-22%20오후%2011.24.42.png)
+<img width="938" alt="스크린샷 2022-03-22 오후 11 24 42" src="https://user-images.githubusercontent.com/60412023/159520296-4345a62f-0391-47f8-a58c-0ad6f96af663.png">
 
 수많은 에러를 뱉어낸 mysql과의 싸움일지 끝~
