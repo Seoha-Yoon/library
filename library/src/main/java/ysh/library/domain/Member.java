@@ -11,6 +11,8 @@ import ysh.library.auth.Role;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -30,6 +32,9 @@ public class Member {
     @Column(name = "RegDate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
+
+    @OneToMany(mappedBy = "member")
+    private List<Rent> rents = new ArrayList<>();
 
     public Member(MemberSignupRequestDto request) {
         this.email = request.getEmail();

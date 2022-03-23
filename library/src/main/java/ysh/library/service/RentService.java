@@ -11,6 +11,9 @@ import ysh.library.repository.BookRepository;
 import ysh.library.repository.MemberRepository;
 import ysh.library.repository.RentRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -43,6 +46,14 @@ public class RentService {
     public void returnBook(Long rentId){
         Rent rent =rentRepository.findOne(rentId);
         rent.returnBook();
+        rentRepository.deleteRent(rentId);
+    }
+
+    /**
+     * 대여 목록 찾기
+     */
+    public List<Rent> findRent(String email){
+        return rentRepository.findRentByEmail(email);
     }
 
 

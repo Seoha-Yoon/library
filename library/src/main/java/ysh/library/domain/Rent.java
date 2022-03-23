@@ -19,7 +19,7 @@ public class Rent {
     @Column(name = "rent_id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
@@ -35,6 +35,7 @@ public class Rent {
     }
 
     public void setMember(Member member){
+        member.getRents().add(this);
         this.member = member;
     }
 

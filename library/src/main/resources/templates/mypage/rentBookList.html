@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader" />
+  <div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>제목</th>
+        <th>작가</th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="r : ${rents}">
+        <tr th:each="b : ${r.getRentBooks()}">
+          <td th:text="${b.id}"></td>
+          <td th:text="${b.book.title}"></td>
+          <td th:text="${b.book.author}"></td>
+          <td>
+            <a href="#" th:href="@{/mypage/rented/{id}/return (id=${r.id})}" class="btn btn-primary" role="button">반납하기</a>
+          </td>
+        </tr>
+
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+  <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+
+</body>
+</html>

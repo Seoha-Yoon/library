@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      >
+<head>
+    <meta charset="UTF-8">
+    <title>user page</title>
+    <head th:replace="fragments/header :: header" />
+</head>
+<body>
+<h2>메인 페이지(회원 전용)</h2>
+
+<form th:object="${form}"  method="post" autocomplete="off">
+    <div class="form-group">
+        <label th:for="email">이메일</label>
+        <input type="text" th:field="*{email}" class="form-control" readonly>
+    </div>
+</form>
+
+<li><a href="/mypage/rented">책 대여 목록 확인하기</a></li>
+<li><a href="/mypage/editInfo">회원 정보 수정하기</a></li>
+
+<form id="logout" th:action="@{/logout}" method="GET">
+    <input type="submit" value="로그아웃"/>
+</form> <br>
+
+<a href="/admin">관리자 페이지로 이동 -></a>
+</body>
+</html>
