@@ -37,7 +37,7 @@ drop table if exists book CASCADE;
 1.  필요한 엔티티 생성 및 설계
 * **엔티티 간 연관관계**
   
-  (연관관계 이미지 추가 예정)
+  ![Entity Relation](https://user-images.githubusercontent.com/60412023/159709905-b081ae23-d9b8-4f27-88e5-1d6c62f56cc0.png)
   
   * Book: 도서 엔티티
   
@@ -48,6 +48,8 @@ drop table if exists book CASCADE;
   * Rent: 대여 엔티티
   
   * RentBook: Rent와 Book 사이의 다대다 관계를 풀어주는 연결 엔티티 
+  
+  * Comment: 댓글 엔티티
 
    
 
