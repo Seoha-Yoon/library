@@ -34,7 +34,7 @@ public class Member {
     private LocalDate date;
 
     @OneToMany(mappedBy = "member")
-    private List<Rent> rents = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 
     public Member(MemberSignupRequestDto request) {
         this.email = request.getEmail();

@@ -35,7 +35,6 @@ public class Rent {
     }
 
     public void setMember(Member member){
-        member.getRents().add(this);
         this.member = member;
     }
 
