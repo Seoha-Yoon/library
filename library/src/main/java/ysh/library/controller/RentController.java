@@ -1,12 +1,14 @@
 package ysh.library.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ysh.library.auth.UserDetailsImpl;
 import ysh.library.domain.Book;
 import ysh.library.domain.Member;
 import ysh.library.service.BookService;
@@ -36,8 +38,9 @@ public class RentController {
     }
 
     @PostMapping
-    public String createForm(@RequestParam("memberId") Long memberId,
+    public String createForm(@AuthenticationPrincipal UserDetailsImpl currentMember,
                              @RequestParam("bookId") Long bookId){
+        Long memberId = memberService.findUserByEmail(currentMember.getUsername());
         rentService.rent(memberId, bookId);
         return "redirect:library/rent/rents";
     }
