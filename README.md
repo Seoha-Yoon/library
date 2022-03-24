@@ -1,6 +1,6 @@
 # 도서관 웹 서비스 프로젝트
 
-### 개발일지
+## 개발일지
 [Day1. 단순 로그인, 회원가입 구현](https://github.com/Seoha-Yoon/library/blob/main/개발일지/도서관_day1.md)  
 [Day2. Spring Security 이용 로그인, 회원가입 구현](https://github.com/Seoha-Yoon/library/blob/main/개발일지/도서관_day2.md)  
 [Day3. 도서 대여 서비스 구현 (작성중)](https://github.com/Seoha-Yoon/library/blob/main/개발일지/도서관_day3.md)  
@@ -8,7 +8,7 @@
 [Day5. MySQL 설치 및 연동](https://github.com/Seoha-Yoon/library/blob/main/개발일지/도서관_day5.md)  
 
 
-### 구현 기능
+## 구현 기능
 #### 1. 회원가입
 - 이메일, 비밀번호 회원가입
 - 이메일 중복 불가
@@ -31,7 +31,7 @@
 - 책 반납 가능, 반납 시 목록에서 삭제
 
 
-### 추가 / 수정할 기능
+## 추가 / 수정할 기능
 #### 1. 회원가입
 - 회원가입 시 메일 인증
 - 닉네임 기입란 추가 (닉네임 중복 불가)
