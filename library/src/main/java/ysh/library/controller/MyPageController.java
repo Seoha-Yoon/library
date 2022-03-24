@@ -15,6 +15,7 @@ import ysh.library.domain.Rent;
 import ysh.library.domain.RentBook;
 import ysh.library.repository.MemberRepository;
 import ysh.library.repository.RentRepository;
+import ysh.library.service.MemberService;
 import ysh.library.service.RentService;
 
 import java.util.List;
@@ -27,12 +28,15 @@ import java.util.Optional;
 public class MyPageController {
 
     private final RentService rentService;
+    private final MemberService memberService;
 
     @GetMapping
     public String myPageHome(Model model, @AuthenticationPrincipal UserDetailsImpl currentMember){
 
         MemberForm form = new MemberForm();
-        form.setEmail(currentMember.getUsername());
+        Long memberId = memberService.findUserByEmail(currentMember.getUsername());
+        Member member = memberService.findOne(memberId);
+        form.setNickname(member.getNickname());
         model.addAttribute("form", form);
         return "mypage/main";
     }

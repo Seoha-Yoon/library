@@ -25,6 +25,7 @@ public class Member {
     private String email;
     private String password;
     private String name;
+    private String nickname;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -42,6 +43,7 @@ public class Member {
         this.name = request.getName();
         date = LocalDate.now();
         role = request.getRole();
+        nickname = request.getNickname();
     }
 
     public void encryptPassword(PasswordEncoder passwordEncoder) {
