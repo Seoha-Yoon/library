@@ -19,7 +19,7 @@
 - 역할에 따라 페이지 접근 권한 관리 (User, Admin)
 
 #### 3. 책 대여/반납
-- 책 대여/반납 시 책 status 변경 (AVAILABLE, USED)
+- 책 대여/반납 시 책 status 변경 (AVAILABLE, RENTED)
 
 #### 4. 댓글
 - 각 책마다 댓글 등록
