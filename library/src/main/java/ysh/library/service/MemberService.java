@@ -58,4 +58,12 @@ public class MemberService {
     public List<Member> findMembers(){
         return memberRepository.findAll();
     }
+
+    /**
+     * 영속석 컨텍스트가 멤버 수정
+     */
+    public void updateMember(Long id, String nickname){
+        Member member = memberRepository.findOne(id);
+        member.setNickname(nickname);
+    }
 }
