@@ -1,9 +1,11 @@
 package ysh.library.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ysh.library.auth.UserDetailsImpl;
 import ysh.library.domain.Book;
 import ysh.library.domain.Comment;
 import ysh.library.service.BookService;
@@ -36,14 +38,16 @@ public class BookController {
     }
 
     @GetMapping("/books/{bookId}/detail")
-    public String bookDetail(@PathVariable("bookId") Long bookId, Model model){
+    public String bookDetail(@PathVariable("bookId") Long bookId, Model model, @AuthenticationPrincipal UserDetailsImpl curMember){
         Book book = bookService.findOne(bookId);
         List<Comment> comments = book.getComments();
+        Long memberId = memberService.findUserByEmail(curMember.getUsername());
 
         if(comments != null && !comments.isEmpty()){
             model.addAttribute("comments", comments);
         }
         model.addAttribute("book", book);
+        model.addAttribute("memberId", memberId);
         return "library/bookDetail";
     }
 
@@ -55,8 +59,8 @@ public class BookController {
     }
 
     @PostMapping("/books/{bookId}/comment")
-    public String createComment(@PathVariable("bookId") Long bookId, CommentForm form, Model model){
-        Long memberId = memberService.findUserByEmail(form.getEmail());
+    public String createComment(@PathVariable("bookId") Long bookId, CommentForm form, @AuthenticationPrincipal UserDetailsImpl curMember){
+        Long memberId = memberService.findUserByEmail(curMember.getUsername());
         commentService.createComment(memberId, bookId, form.getComment());
 
         return "redirect:/library/books/{bookId}/detail";
@@ -67,7 +71,6 @@ public class BookController {
                                 Model model){
         Comment comment = commentService.findOne(commentId);
         CommentForm form = new CommentForm();
-        form.setEmail(comment.getMember().getEmail());
         form.setComment(comment.getComments());
         model.addAttribute("form", form);
 
@@ -76,7 +79,7 @@ public class BookController {
 
     @PostMapping("/books/{bookId}/comment/{commentId}/edit")
     public String updateComment(@PathVariable("commentId") Long commentId,
-                                CommentForm form, Model model){
+                                CommentForm form){
         commentService.editComment(commentId, form.getComment());
         return "redirect:/library/books/{bookId}/detail";
     }

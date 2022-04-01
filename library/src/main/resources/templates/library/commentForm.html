@@ -8,11 +8,6 @@
         <div class="card-body">
             <form th:object="${form}"  method="post" autocomplete="off">
                 <div class="form-group">
-                    <label th:for="email">이메일</label>
-                    <input type="text" th:field="*{email}" class="form-control"
-                           placeholder="이메일 입력">
-                </div>
-                <div class="form-group">
                     <input type="hidden" name="id" th:value="*{id}" />
                     <textarea type="text" th:field="*{comment}" class="form-control" rows="3"></textarea>
                 </div>
