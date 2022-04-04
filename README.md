@@ -7,7 +7,7 @@
 [Day3. 도서 대여 서비스 구현 (작성중)](https://github.com/Seoha-Yoon/library/blob/main/개발일지/도서관_day3.md)  
 [Day4. 댓글 CRUD (작성중)](https://github.com/Seoha-Yoon/library/blob/main/개발일지/도서관_day4.md)  
 [Day5. MySQL 설치 및 연동](https://github.com/Seoha-Yoon/library/blob/main/개발일지/도서관_day5.md)  
-[DTO와 DAO](https://github.com/Seoha-Yoon/library/blob/main/개발일지/DAO와 DTO.md)
+[DTO와 DAO](https://github.com/Seoha-Yoon/library/blob/main/개발일지/DAO_DTO.md)
 
 ## 구현 기능
 
