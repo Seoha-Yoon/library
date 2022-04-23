@@ -37,7 +37,7 @@ public class BookController {
         return "library/bookList";
     }
 
-    @GetMapping("/books/{bookId}/detail")
+    @GetMapping("/books/{bookId}")
     public String bookDetail(@PathVariable("bookId") Long bookId, Model model, @AuthenticationPrincipal UserDetailsImpl curMember){
         Book book = bookService.findOne(bookId);
         List<Comment> comments = book.getComments();
@@ -63,7 +63,7 @@ public class BookController {
         Long memberId = memberService.findUserByEmail(curMember.getUsername());
         commentService.createComment(memberId, bookId, form.getComment());
 
-        return "redirect:/library/books/{bookId}/detail";
+        return "redirect:/library/books/{bookId}";
     }
 
     @GetMapping("/books/{bookId}/comment/{commentId}/edit")
