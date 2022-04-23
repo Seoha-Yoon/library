@@ -43,10 +43,10 @@ public class MyPageController {
         return "mypage/rentBookList";
     }
 
-    @GetMapping("rented/{rentId}/return")
-    public String returnBook(@PathVariable("rentId") Long rentId, Model model){
+    @DeleteMapping("rented/{rentId}")
+    public String returnBook(@PathVariable("rentId") Long rentId){
         rentService.returnBook(rentId);
-        return "redirect:mypage/rented";
+        return "redirect:/mypage/rented/";
     }
 
     @GetMapping("editInfo")

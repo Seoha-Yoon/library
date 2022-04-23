@@ -21,7 +21,10 @@
           <td th:text="${b.book.title}"></td>
           <td th:text="${b.book.author}"></td>
           <td>
-            <a href="#" th:href="@{/mypage/rented/{id}/return (id=${r.id})}" class="btn btn-primary" role="button">반납하기</a>
+            <form th:action="@{'/mypage/rented/'+${r.id}}" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button id="반납하기"> 반납하기</button>
+            </form>
           </td>
         </tr>
 

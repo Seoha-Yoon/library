@@ -42,7 +42,7 @@ public class RentController {
                              @RequestParam("bookId") Long bookId){
         Long memberId = memberService.findUserByEmail(currentMember.getUsername());
         rentService.rent(memberId, bookId);
-        return "redirect:";
+        return "redirect:/library";
     }
 
 }
