@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ysh.library.domain.dto.MemberDetailsDto;
 import ysh.library.domain.dto.MemberSignupRequestDto;
 import ysh.library.domain.Member;
 import ysh.library.repository.MemberRepository;
@@ -48,8 +49,10 @@ public class MemberService {
         return m.get().getUserId();
     }
 
-    public Member findOne(Long memberId){
-        return memberRepository.findOne(memberId);
+    public MemberDetailsDto findOne(Long memberId){
+        Member member = memberRepository.findOne(memberId);
+        MemberDetailsDto memberDetailsDto = new MemberDetailsDto(member.getEmail(), member.getName(), member.getRole(), member.getNickname());
+        return memberDetailsDto;
     }
 
     /**

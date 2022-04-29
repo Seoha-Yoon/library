@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ysh.library.auth.UserDetailsImpl;
 import ysh.library.domain.Member;
 import ysh.library.domain.Rent;
+import ysh.library.domain.dto.MemberDetailsDto;
 import ysh.library.service.MemberService;
 import ysh.library.service.RentService;
 
@@ -28,7 +29,7 @@ public class MyPageController {
 
         MemberForm form = new MemberForm();
         Long memberId = memberService.findUserByEmail(currentMember.getUsername());
-        Member member = memberService.findOne(memberId);
+        MemberDetailsDto member = memberService.findOne(memberId);
         form.setNickname(member.getNickname());
         model.addAttribute("form", form);
         return "mypage/main";
@@ -52,7 +53,8 @@ public class MyPageController {
     @GetMapping("editInfo")
     public String editInfo(@AuthenticationPrincipal UserDetailsImpl currentMember, Model model){
         Long memberId = memberService.findUserByEmail(currentMember.getUsername());
-        Member member = memberService.findOne(memberId);
+
+        MemberDetailsDto member = memberService.findOne(memberId);
 
         MemberForm form = new MemberForm();
         form.setName(member.getName());
