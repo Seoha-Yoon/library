@@ -6,7 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ysh.library.auth.MemberSignupRequestDto;
+import ysh.library.domain.dto.MemberSignupRequestDto;
 import ysh.library.domain.Member;
 import ysh.library.repository.MemberRepository;
 
@@ -60,7 +60,7 @@ public class MemberService {
     }
 
     /**
-     * 영속석 컨텍스트가 멤버 수정
+     * 영속성 컨텍스트가 멤버 수정
      */
     public void updateMember(Long id, String nickname){
         Member member = memberRepository.findOne(id);

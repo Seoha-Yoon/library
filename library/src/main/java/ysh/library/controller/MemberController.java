@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ysh.library.auth.MemberSignupRequestDto;
+import ysh.library.domain.dto.MemberSignupRequestDto;
 import ysh.library.service.MemberService;
 import javax.validation.Valid;
 

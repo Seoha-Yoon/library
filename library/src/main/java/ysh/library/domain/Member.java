@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ysh.library.auth.MemberSignupRequestDto;
+import ysh.library.domain.dto.MemberSignupRequestDto;
 import ysh.library.auth.Role;
 
 import javax.persistence.*;
