@@ -22,6 +22,11 @@
         <td>
           <a href="#" th:href="@{/library/books/{id} (id=${book.id})}" class="btn btn-primary" role="button">세부정보</a>
         </td>
+        <td>
+          <form th:if="${book.status.toString().equals('AVAILABLE')}" th:action="@{/library/books/{id} (id=${book.id})}" method="post">
+            <button id="반납하기"> 대여하기</button>
+          </form>
+        </td>
       </tr>
       </tbody>
     </table>

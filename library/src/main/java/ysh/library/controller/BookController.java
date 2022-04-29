@@ -11,6 +11,7 @@ import ysh.library.domain.Comment;
 import ysh.library.service.BookService;
 import ysh.library.service.CommentService;
 import ysh.library.service.MemberService;
+import ysh.library.service.RentService;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class BookController {
     private final BookService bookService;
     private final CommentService commentService;
     private final MemberService memberService;
+    private final RentService rentService;
 
     // 로그인한 유저만 접근 가능한 라이브러리 홈페이지
     @GetMapping
@@ -35,6 +37,14 @@ public class BookController {
         List<Book> books = bookService.findBooks();
         model.addAttribute("books",books);
         return "library/bookList";
+    }
+
+    @PostMapping("/books/{bookId}")
+    public String rentBook(@AuthenticationPrincipal UserDetailsImpl currentMember,
+                             @PathVariable("bookId") Long bookId){
+        Long memberId = memberService.findUserByEmail(currentMember.getUsername());
+        rentService.rent(memberId, bookId);
+        return "redirect:/library/books";
     }
 
     @GetMapping("/books/{bookId}")

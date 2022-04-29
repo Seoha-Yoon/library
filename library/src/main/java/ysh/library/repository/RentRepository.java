@@ -2,13 +2,10 @@ package ysh.library.repository;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
-import ysh.library.domain.Book;
-import ysh.library.domain.Member;
 import ysh.library.domain.Rent;
 
 import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
