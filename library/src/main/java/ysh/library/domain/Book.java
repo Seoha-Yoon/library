@@ -18,6 +18,7 @@ public class Book {
     private String publisher;
     private String isbn;
     private int year;
+    private int stock;
 
     // 책 상태
     @Enumerated(EnumType.STRING)
@@ -29,5 +30,13 @@ public class Book {
 
     public void changeStatus(BookStatus bookStatus) {
         status = bookStatus;
+    }
+
+    public void decreaseStock(){
+        stock--;
+    }
+
+    public void increaseStock(){
+        stock++;
     }
 }

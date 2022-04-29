@@ -30,14 +30,19 @@ public class RentBook {
     public static RentBook createRentBook(Book book){
         RentBook rentBook = new RentBook();
         rentBook.setBook(book);
+        book.decreaseStock();
 
-        book.changeStatus(BookStatus.RENTED);
+        if(book.getStock() <= 0)
+            book.changeStatus(BookStatus.UNAVAILABLE);
         return rentBook;
     }
 
     //==비즈니스 로직==/
     public void returnBook(){
-        getBook().setStatus(BookStatus.AVAILABLE);
+        Book book = getBook();
+        book.increaseStock();
+        if(book.getStock()>0)
+            getBook().setStatus(BookStatus.AVAILABLE);
     }
 
 }
