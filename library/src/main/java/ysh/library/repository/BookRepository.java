@@ -24,6 +24,13 @@ public class BookRepository {
         return book.stream().findAny();
     }
 
+    public Optional<Book> findByISBN(String isbn){
+        List<Book> book = em.createQuery("select b from Book b where b.isbn= :isbn", Book.class)
+                .setParameter("isbn", isbn)
+                .getResultList();
+        return book.stream().findAny();
+    }
+
     public List<Book> findAll(){
         return em.createQuery("select b from Book b", Book.class)
                 .getResultList();

@@ -1,5 +1,6 @@
 package ysh.library.book;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +25,7 @@ public class FindBookTest {
 
         StopWatch stopWatch2 = new StopWatch();
         stopWatch2.start();
-        bookRepository.findByBookName("고구려");
+        bookRepository.findByBookName("9791197063268");
         stopWatch2.stop();
         System.out.println(stopWatch2.prettyPrint());
 
@@ -34,6 +35,8 @@ public class FindBookTest {
         if(time1 < time2){
             System.out.println("인덱스 활용해서 검색하는 것이 "+time2/time1+"배 더 빠름");
        }
+
+        Assertions.assertEquals(time2 > time1, true);
 
     }
 }
