@@ -9,6 +9,10 @@
 [Day5. MySQL 설치 및 연동](https://github.com/Seoha-Yoon/library/blob/main/개발일지/도서관_day5.md)  
 [DTO와 DAO](https://github.com/Seoha-Yoon/library/blob/main/개발일지/DAO_DTO.md)
 
+[빌더 패턴]([library/Builder패턴.md at main · Seoha-Yoon/library · GitHub](https://github.com/Seoha-Yoon/library/blob/main/개발일지/Builder패턴.md))
+
+[REST API(작성중)]([library/Builder패턴.md at main · Seoha-Yoon/library · GitHub](https://github.com/Seoha-Yoon/library/blob/main/개발일지/RESTapi.md))
+
 ## 구현 기능
 
 #### 1. 회원가입
