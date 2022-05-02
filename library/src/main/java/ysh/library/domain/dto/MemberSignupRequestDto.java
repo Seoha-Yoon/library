@@ -1,10 +1,12 @@
 package ysh.library.domain.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import ysh.library.auth.Role;
 
 @Getter @Setter
+@Builder
 public class MemberSignupRequestDto {
     private String email;
     private String password;
